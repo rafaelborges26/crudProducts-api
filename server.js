@@ -3,29 +3,17 @@ const mongoose = require('mongoose')
 const requireDir = require('require-dir')
 
 const app = express()
+app.use(express.json()) //permitir post em json
 
 //Iniciando o database //padrao localhost:porta/schema
 mongoose.connect('mongodb://localhost:27017/nodeapi',
 {useNewUrlParser: true })
 
 //require('./src/models/Product') //sem require-dir
-requireDir("./src/models") //com o require dir
+requireDir("./src/models") //com o require dir pegando os models
 
-
-const Product = mongoose.model('Product') //pegando o model product
-
-
-app.get('/',(require, response) => {
-
- Product.create({ //insert
-         title: 'React',
-         description: 'A tecnology of aplication frontend',
-         url: 'www.teste.com.br'}
-         )
-
-        return response.send("Hello word!!")
-//instalamos o nodemon para stalvar as alterações de forma automatica
-})
-
+//Rotas
+app.use("/api", require("./src/routes")) //apartir da rota api no browser, mandaremos para o arquivo src/routes
+//o use recebera todo tipo de requisicao
 app.listen(3001)
 
