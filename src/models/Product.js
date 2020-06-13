@@ -1,6 +1,6 @@
 //criação de schema
 const mongoose = require('mongoose')
-
+const mongoosePaginate = require('mongoose-paginate')
 
 
 const ProductSchema = new mongoose.Schema({
@@ -22,5 +22,7 @@ const ProductSchema = new mongoose.Schema({
         default: Date.now
     }
 })
+
+ProductSchema.plugin(mongoosePaginate)//paginação p n precisar retornar td de uma vez
 
 mongoose.model('Product', ProductSchema)
