@@ -11,7 +11,7 @@ app.use(cors()) //esta disponivel para todos os dominios, conseguimos limitar se
 mongoose.connect('mongodb://localhost:27017/nodeapi',
 {useNewUrlParser: true })
 
-//require('./src/models/Product') //sem require-dir
+//require('./src/models/Product') //sem require-dir - criar os models
 requireDir("./src/models") //com o require dir pegando os models
 
 //Rotas
