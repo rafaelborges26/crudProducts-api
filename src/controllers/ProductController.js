@@ -12,7 +12,7 @@ module.exports = {
     },
 
     async show(req, res) {
-        const product = await Product.findById(require.params.id)
+        const product = await Product.findById(req.params.id)
 
         return res.json(product)
     },
